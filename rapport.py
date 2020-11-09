@@ -364,30 +364,31 @@ It will help us understand why the neural network failed sometimes to classify i
 """
 
 if__name__ == "__main__":
-      nsample = 1000
-      X_test = normalize_data(X_test)
-      y_test = target_to_one_hot(y_test)
+    nsample = 1000
+    X_test = normalize_data(X_test)
+    y_test = target_to_one_hot(y_test)
 
 
-      X_demo = X_test[:nsample,:]
-      y_demo = ffnn.forward_pass(X_demo)
-      y_true = y_test[:nsample,:]
+    X_demo = X_test[:nsample,:]
+    y_demo = ffnn.forward_pass(X_demo)
+    y_true = y_test[:nsample,:]
 
-      index_to_plot = 50 
-      plot_one_image(X_demo, y_true, index_to_plot)
+    index_to_plot = 50 
+    plot_one_image(X_demo, y_true, index_to_plot)
 
-      # Compare to the prediction 
-      prediction = np.argmax(y_demo[index_to_plot,:])
-      true_target = np.argmax(y_true[index_to_plot,:])
+    # Compare to the prediction 
+    prediction = np.argmax(y_demo[index_to_plot,:])
+    true_target = np.argmax(y_true[index_to_plot,:])
 
-      # is it the same number ?
+    # is it the same number ?
 
 if__name__ == "__main__":
-      # loop arround the demo test set and try to find a miss prediction
-      for i in range(0, nsample):   
-          prediction = None # Todo
-          true_target = None # Todo
-          if prediction != true_target:
+    # loop arround the demo test set and try to find a miss prediction
+    for i in range(0, nsample):   
+        prediction = None # Todo
+        true_target = None # Todo
+        if prediction != true_target:
+           pass
               # TODO
 
 """## Open analysis
