@@ -118,10 +118,10 @@ For example, a `[0,1,9]` vector will become the following matrix:
 
 def target_to_one_hot(target: np.array) -> np.array:
     one_hot_matrix = np.zeros((target.shape[0],10))
-    
+
     for i in range(0,target.shape[0]):
-        label = int(target[i])
-        one_hot_matrix[i,label] = 1  
+      label = int(target[i])
+      one_hot_matrix[i,label] = 1  
 
     return one_hot_matrix
 
@@ -267,25 +267,25 @@ class FFNN:
     def update_all_weights(self)-> None:
         # TODO: Update all W matrix using the update_weights function
         for i in range(0,(self.nlayers)-1):
-            cur_layer = self.layers[i]
-            next_layer = self.layers[i+1]
-            _ = self.update_weights(cur_layer, next_layer)
+          cur_layer = self.layers[i]
+          next_layer = self.layers[i+1]
+          _ = self.update_weights(cur_layer, next_layer)
 
         pass
         
     def get_error(self, y_pred: np.array, y_batch: np.array)-> float:
         # TODO: return the accuracy on the predictions
         # the accuracy should be in the [0.0, 1.0] range
-        rep = 0
+       rep = 0
 
-        for i in range(0,len(y_pred)):
+       for i in range(0,len(y_pred)):
             batch = np.argmax(y_batch[i])
             prediction = np.argmax(y_pred[i])
           
             if( batch == prediction):
-                rep+=1
+              rep+=1
 
-        return rep/len(y_pred)
+       return rep/len(y_pred)
   
     
     def get_test_error(self, X: np.array, y: np.array)-> float:
@@ -347,50 +347,41 @@ assert X_test.shape[0] % minibatch_size == 0
 
 err = ffnn.train(nepoch, normalize_data(X_train), target_to_one_hot(y_train), normalize_data(X_test), target_to_one_hot(y_test))
 
-"""```
-# `Ce texte est au format code`
-```
-
-
-
-*   Élément de liste
-*   Élément de liste
-
-## Error analysis (2 pts)
+"""## Error analysis (2 pts)
 
 Here we use a subset of the test data to try and find some miss classification.
 
 It will help us understand why the neural network failed sometimes to classify images.
 """
 
-if__name__ == "__main__":
-    nsample = 1000
-    X_test = normalize_data(X_test)
-    y_test = target_to_one_hot(y_test)
+nsample = 1000
+X_test = normalize_data(X_test)
+y_test = target_to_one_hot(y_test)
 
 
-    X_demo = X_test[:nsample,:]
-    y_demo = ffnn.forward_pass(X_demo)
-    y_true = y_test[:nsample,:]
+X_demo = X_test[:nsample,:]
+y_demo = ffnn.forward_pass(X_demo)
+y_true = y_test[:nsample,:]
 
-    index_to_plot = 50 
-    plot_one_image(X_demo, y_true, index_to_plot)
+index_to_plot = 50 
+plot_one_image(X_demo, y_true, index_to_plot)
 
-    # Compare to the prediction 
-    prediction = np.argmax(y_demo[index_to_plot,:])
-    true_target = np.argmax(y_true[index_to_plot,:])
+# Compare to the prediction 
+prediction = np.argmax(y_demo[index_to_plot,:])
+true_target = np.argmax(y_true[index_to_plot,:])
 
-    # is it the same number ?
+# is it the same number ?
 
-if__name__ == "__main__":
-    # loop arround the demo test set and try to find a miss prediction
-    for i in range(0, nsample):   
-        prediction = None # Todo
-        true_target = None # Todo
-        if prediction != true_target:
-            
-            # TODO
-            pass
+# loop arround the demo test set and try to find a miss prediction
+for i in range(0, nsample): 
+    missprediction = 0  
+    prediction = np.argmax(y_demo[i]) # Todo
+    true_target = np.argmax(y_true[i]) # Todo
+    if prediction != true_target:
+      missprediction +=1
+      pass
+          
+print(missprediction)
 
 """## Open analysis
 
