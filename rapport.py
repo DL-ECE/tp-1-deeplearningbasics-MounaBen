@@ -118,10 +118,10 @@ For example, a `[0,1,9]` vector will become the following matrix:
 
 def target_to_one_hot(target: np.array) -> np.array:
     one_hot_matrix = np.zeros((target.shape[0],10))
-
+    
     for i in range(0,target.shape[0]):
-      label = int(target[i])
-      one_hot_matrix[i,label] = 1  
+        label = int(target[i])
+        one_hot_matrix[i,label] = 1  
 
     return one_hot_matrix
 
@@ -267,25 +267,25 @@ class FFNN:
     def update_all_weights(self)-> None:
         # TODO: Update all W matrix using the update_weights function
         for i in range(0,(self.nlayers)-1):
-          cur_layer = self.layers[i]
-          next_layer = self.layers[i+1]
-          _ = self.update_weights(cur_layer, next_layer)
+            cur_layer = self.layers[i]
+            next_layer = self.layers[i+1]
+            _ = self.update_weights(cur_layer, next_layer)
 
         pass
         
     def get_error(self, y_pred: np.array, y_batch: np.array)-> float:
         # TODO: return the accuracy on the predictions
         # the accuracy should be in the [0.0, 1.0] range
-       rep = 0
+        rep = 0
 
-       for i in range(0,len(y_pred)):
+        for i in range(0,len(y_pred)):
             batch = np.argmax(y_batch[i])
             prediction = np.argmax(y_pred[i])
           
             if( batch == prediction):
-              rep+=1
+                rep+=1
 
-       return rep/len(y_pred)
+        return rep/len(y_pred)
   
     
     def get_test_error(self, X: np.array, y: np.array)-> float:
@@ -388,8 +388,8 @@ if__name__ == "__main__":
         prediction = None # Todo
         true_target = None # Todo
         if prediction != true_target:
-          pass
-              # TODO
+            pass
+            # TODO
 
 """## Open analysis
 
