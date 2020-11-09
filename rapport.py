@@ -388,8 +388,7 @@ if__name__ == "__main__":
         prediction = None # Todo
         true_target = None # Todo
         if prediction != true_target:
-           pass
-              # TODO
+        # TODO
 
 """## Open analysis
 
